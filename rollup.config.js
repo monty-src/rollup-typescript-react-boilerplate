@@ -6,7 +6,6 @@ import livereload from "rollup-plugin-livereload";
 import babel from "@rollup/plugin-babel";
 import replace from "@rollup/plugin-replace";
 import commonjs from "@rollup/plugin-commonjs";
-import typescript from "@rollup/plugin-typescript";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 
 import pkg from "./package.json";
@@ -16,7 +15,6 @@ export default {
   output: {
     file: pkg.main,
     format: "iife",
-    exports: "named",
     sourcemap: true,
   },
   plugins: [
@@ -27,7 +25,6 @@ export default {
       preventAssignment: true,
       "process.env.NODE_ENV": JSON.stringify("development"),
     }),
-    typescript(),
     commonjs({
       include: "node_modules/**",
     }),
